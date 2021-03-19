@@ -50,7 +50,9 @@ function App() {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>SBWriter</title>
+                <meta property="og:title" content="SBWriter" />
                 <meta name="description" content="Simple interface to ponyfiction GPT-2" />
+                <meta property="og:description" content="Simple interface to ponyfiction GPT-2" />
             </Helmet>
       </div>
     <div className='app-container'>
