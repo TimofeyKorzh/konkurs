@@ -4,6 +4,7 @@ import Button from './components/Button';
 import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './styles.scss';
 import { postGenerateTextEndpoint } from './utils';
+import {Helmet} from "react-helmet";
 
 const TITLE = 'SBWriter';
 function App() {
