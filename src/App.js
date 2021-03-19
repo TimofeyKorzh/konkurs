@@ -44,7 +44,15 @@ function App() {
     setToggle(true);
   }
   return (
+    
     <MuiThemeProvider theme ={THEME}>
+    <div className="application">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>SBWriter</title>
+                <meta name="description" content="Simple interface to ponyfiction GPT-2" />
+            </Helmet>
+      </div>
     <div className='app-container'>
       <form noValidate autoComplete='off'>
         <h1>SweetieBot Writer v2.3</h1>
