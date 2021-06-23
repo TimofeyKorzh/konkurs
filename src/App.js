@@ -57,7 +57,7 @@ function App() {
       </div>
     <div className='app-container'>
       <form noValidate autoComplete='off'>
-        <h1>SweetieBot Writer v2.3</h1>
+        <h1>SweetieBot Writer v2.35</h1>
         <TextField className='form textinput' multiline fullWidth value={text} onChange={handleChange} />
         <Button onClick={generateText} />
       </form>
