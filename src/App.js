@@ -5,6 +5,7 @@ import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './styles.scss';
 import { postGenerateTextEndpoint } from './utils';
 //import {Helmet} from "react-helmet";
+import { YMInitializer } from 'react-yandex-metrika';
 
 const TITLE = 'SBWriter';
 function App() {
@@ -50,8 +51,10 @@ function App() {
       </div>
     <div className='app-container'>
       
+    <YMInitializer accounts={[83732773]} />
+
       <form noValidate autoComplete='off'>
-        <h1>SweetieBot Writer v2.3</h1>
+        <h1>SweetieBot Writer v2.35</h1>
         <TextField className='form textinput' multiline fullWidth value={text} onChange={handleChange} />
         <Button onClick={generateText} />
       </form>
