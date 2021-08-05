@@ -4,7 +4,7 @@ import Button from './components/Button';
 import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './styles.scss';
 import { postGenerateTextEndpoint } from './utils';
-import {Helmet} from "react-helmet";
+//import {Helmet} from "react-helmet";
 
 const TITLE = 'SBWriter';
 function App() {
@@ -47,15 +47,9 @@ function App() {
     
     <MuiThemeProvider theme ={THEME}>
     <div className="application">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>SBWriter</title>
-                <meta property="og:title" content="SBWriter" />
-                <meta name="description" content="Simple interface to ponyfiction GPT-2" />
-                <meta property="og:description" content="Simple interface to ponyfiction GPT-2" />
-            </Helmet>
       </div>
     <div className='app-container'>
+      
       <form noValidate autoComplete='off'>
         <h1>SweetieBot Writer v2.3</h1>
         <TextField className='form textinput' multiline fullWidth value={text} onChange={handleChange} />
@@ -63,7 +57,7 @@ function App() {
       </form>
 
       {generatedText.pending &&
-        <div className='result pending'>Please wait </div>}
+        <div className='result pending'>Please wait</div>}
 
       {generatedText.complete &&
         (generatedText.error ?
