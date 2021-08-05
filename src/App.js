@@ -51,7 +51,7 @@ function App() {
       </div>
     <div className='app-container'>
       
-    <YMInitializer accounts={[83732773]} />
+    <YMInitializer accounts={[83732773]} options={{webvisor: true}}/>
 
       <form noValidate autoComplete='off'>
         <h1>SweetieBot Writer v2.35</h1>
