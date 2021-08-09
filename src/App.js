@@ -52,22 +52,25 @@ function App() {
     <div className='app-container'>
       
     <YMInitializer accounts={[83732773]} options={{webvisor: true}}/>
-
+    
       <form noValidate autoComplete='off'>
-        <h1>SweetieBot Writer v2.35</h1>
+      <div class="image hide-mobile">
+      <img src="sweetiebot.png" width="320" height="180" alt="SweetieBot"></img>
+        <h1 class = "Back"><span>SweetieBot Writer v2.45</span></h1>
+        <p></p>
+       </div> 
+       
+       <div class="image show-mobile">
+       <h1><span>SweetieBot Writer v2.45</span></h1>
+       
+       </div>
+       <div class = "myelement">
         <TextField className='form textinput' multiline fullWidth value={text} onChange={handleChange} />
         <Button onClick={generateText} />
+        </div>
       </form>
 
-      {generatedText.pending &&
-        <div className='result pending'>Please wait</div>}
-
-      {generatedText.complete &&
-        (generatedText.error ?
-          <div className='result error'>Bad Request</div> :
-          <div className='result valid'>
-            {generatedText.data.result}
-          </div>)}
+      
     </div>
     </MuiThemeProvider>
   );
