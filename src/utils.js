@@ -2,10 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const ENDPOINT_URL = "https://bot.feather.cloudns.cl/generate";
-<<<<<<< HEAD
 //const ENDPOINT_URL = "http://127.0.0.1:5000/generate";
-=======
->>>>>>> 07c945bf3eb397cde1189b5c62331686a0ded7f3
 
 const useAsyncEndpoint = fn => {
     const [res, setRes] = React.useState({ data: null, complete: false, pending: false, error: false });
