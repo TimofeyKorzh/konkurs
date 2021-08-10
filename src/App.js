@@ -55,7 +55,7 @@ function App() {
     
       <form noValidate autoComplete='off'>
       <div class="image hide-mobile">
-      <img src="sweetiebot.png" width="320" height="180" alt="SweetieBot"></img>
+      <a href="https://twitter.com/Kviksi_nya/status/1424899773165973509"><img src="sweetiebot.png" width="320" height="180" alt="SweetieBot by Kviksi" title="SweetieBot by Kviksi"></img></a>
         <h1 class = "Back"><span>SweetieBot Writer v2.45</span></h1>
         <p></p>
        </div> 
