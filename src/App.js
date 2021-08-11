@@ -65,7 +65,7 @@ function App() {
        
        </div>
        <div class = "myelement">
-        <TextField className='form textinput' multiline fullWidth label="Начните писать и бот продолжит..." value={text} onChange={handleChange} />
+        <TextField className='form textinput' multiline fullWidth label="Начните писать..." value={text} onChange={handleChange} />
         <Button onClick={generateText} />
         </div>
       </form>
