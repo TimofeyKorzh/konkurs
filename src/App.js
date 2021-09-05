@@ -57,7 +57,7 @@ const AdornedButton = (props) => {
     ...rest
   } = props
   return (
-    <Button style={{ marginTop: '1em', marginBottom: '1em', width: 'fit-content', paddingBottom: '2em', backgroundColor: 'transparent'}}
+    <Button size="large" style={{ marginTop: '1em', marginBottom: '1em', width: 'fit-content', paddingBottom: '2em', backgroundColor: 'transparent'}}
 
     color="primary"
     {...rest}>
