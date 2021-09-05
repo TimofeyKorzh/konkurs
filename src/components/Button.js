@@ -8,7 +8,7 @@ const Button = ({ onClick }) => (
         onClick={onClick}
         variant="outlined"
         color="primary">
-        Generate
+        
   </MaterialButton>
 )
 
