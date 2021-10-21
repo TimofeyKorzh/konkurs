@@ -17,6 +17,8 @@ function App() {
   const [text, setText] = useState("");
   //const [model, setModel] = useState('gpt2');
   const model = "345M";
+  const [temperature, setTemperature] = useState(0.9);
+  const [lenght, setLenght] = useState(50);
   const [generatedText, postGenerateText] = postGenerateTextEndpoint();
 
   const handleChange = (event) => {
@@ -71,7 +73,7 @@ const AdornedButton = (props) => {
  
   const generateText = () => {
     generatedText.complete = false;
-    postGenerateText({ text, model, userId: 1 });
+    postGenerateText({ text, temperature, lenght });
     setToggle(false);
   }
   if (generatedText.complete && !generatedText.error && !toggle){
