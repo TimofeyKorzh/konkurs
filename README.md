@@ -13,7 +13,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-To installs necessary modules for react app.
+To install necessary modules for react app.
 
 ## Available Scripts
 
