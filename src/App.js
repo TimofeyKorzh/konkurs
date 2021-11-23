@@ -18,7 +18,7 @@ function App() {
   //const [model, setModel] = useState('gpt2');
   const model = "345M";
   const [temperature, setTemperature] = useState(1);
-  const [lenght, setLenght] = useState(50);
+  const [lenght, setLenght] = useState(20);
   const [generatedText, postGenerateText] = postGenerateTextEndpoint();
 
   const handleChange = (event) => {
