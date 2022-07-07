@@ -1,5 +1,5 @@
-# SBWriterFront
-Simple react app to interface with [ponyfiction GPT-2 backend](https://github.com/TimofeyKorzh/SBWBackend).
+# Konkurs
+Simple react app to send files.
 Made with [create-react-app](https://github.com/facebook/create-react-app)
 ## Project structure
 
