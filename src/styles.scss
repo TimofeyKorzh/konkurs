@@ -84,10 +84,11 @@ form {
   }
 .Back {
 	position	: absolute;
-	top		: 80%;
+	top		: 100%;
 	left		: 0;
 	width		: 100%;
   z-index: -1;
+  text-align: center;
 }
 img {
   max-width: 100%;
@@ -97,5 +98,5 @@ img {
 .myelement {
   clear:left;
   height:25px;
-  margin-top: 20px;  // See below for explanation of this
+  margin-top: 200px;  // See below for explanation of this
  }

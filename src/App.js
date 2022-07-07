@@ -1,30 +1,63 @@
-import { TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-//import Button from './components/Button';
 import Button from '@material-ui/core/Button'
 import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './styles.scss';
 import { postGenerateTextEndpoint } from './utils';
-//import {Helmet} from "react-helmet";
 import { YMInitializer } from 'react-yandex-metrika';
-import CircularProgress from '@material-ui/core/CircularProgress'
-import { withStyles } from '@material-ui/core/styles'
-import { Container } from '@material-ui/core';
+
 import { Box } from '@material-ui/core';
-const TITLE = 'SBWriter';
+import axios from 'axios';
+
+const TITLE = 'Конкурс писателей фанфиков';
 function App() {
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState("");
   //const [model, setModel] = useState('gpt2');
-  const model = "345M";
   const [temperature, setTemperature] = useState(1);
   const [lenght, setLenght] = useState(20);
   const [generatedText, postGenerateText] = postGenerateTextEndpoint();
+  const [file, setFile] = useState();
+  const [response, setResponse] = useState();
 
   const handleChange = (event) => {
-    setText(event.target.value);
+    setFile(event.target.files[0]);
+    setResponse("Подождите немного...")
   };
 
+
+  const handleSubmit = (event) => {
+    setResponse("Подождите немного...")
+    event.preventDefault();
+    let form_data = new FormData();
+    form_data.append('file', event.target.files[0], event.target.files[0].name);
+    let url = 'https://api.konkurs.monetka.name/upload';
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+        .then(res => {
+          console.log(res.data);
+          if (res.data.message == "There was an error uploading the file"){
+            setResponse("Ой-ой! Что-то пошло не так...");
+          }
+          else if (res.data.message == "This file was alredy sent!"){
+            setResponse("А разве ты мне уже не слал этот файл?.. Твой код: " + String(res.data.hash));
+          }
+          else {
+            setResponse("Получила и запомнила! Твой код: " + String(res.data.hash));
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          setResponse("Ой-ой! Что-то пошло не так...");
+        })
+  };
+  const fileSend = () => {
+    console.log(file);
+    console.log("Test")
+    postGenerateText( file );
+  }
 
   useEffect(() => {
     document.title = TITLE;
@@ -45,41 +78,10 @@ function App() {
     marginLeft: 5
   }
 }
-const SpinnerAdornment = withStyles(styles)(props => (
-  <CircularProgress
-    className={props.classes.spinner}
-    size={10}
-    style={{marginLeft: "0.5em"}}
-  />
-))
-const AdornedButton = (props) => {
-  const {
-    children,
-    loading,
-    ...rest
-  } = props
-  return (
-    <Button size="large" style={{ marginTop: '1em', marginBottom: '1em', width: 'fit-content', paddingBottom: '2em', backgroundColor: 'transparent'}}
 
-    color="primary"
-    {...rest}>
-       
-      {children}
-      {loading && <SpinnerAdornment  {...rest} />}
-      
-    </Button>
-  )
-}
+
  
-  const generateText = () => {
-    generatedText.complete = false;
-    postGenerateText({ text, temperature, lenght });
-    setToggle(false);
-  }
-  if (generatedText.complete && !generatedText.error && !toggle){
-    setText(text+generatedText.data.result);
-    setToggle(true);
-  }
+
   return (
     
     <MuiThemeProvider theme ={THEME}>
@@ -87,28 +89,41 @@ const AdornedButton = (props) => {
       </div>
     <div className='app-container'>
       
-    <YMInitializer accounts={[83732773]} options={{webvisor: true}}/>
+    <YMInitializer accounts={[89457679]}/>
     
     <form noValidate autoComplete='off'> 
       <div class="image hide-mobile">
-      <a href="https://twitter.com/Kviksi_nya/status/1424899773165973509"><img src="sweetiebot.png" width="320" height="180" alt="SweetieBot by Kviksi" title="SweetieBot by Kviksi"></img></a>
-        <h1 class = "Back"><span>SweetieBot Writer v2.54</span></h1>
+      <img src="unknown-35.png" height="180" alt="Writer by F_F" title="Writer by F_F"></img>
         <p></p>
+  
        </div> 
        
-       <div class="image show-mobile">
-       <h1><span>SweetieBot Writer v2.45</span></h1>
+       <Box textAlign='center'>
+       <h1><span>Конкурс писателей фанфиков</span></h1>
+       <p>Привет, друг! Здесь ты сможешь отправить свою работу на конкурс и получить код!</p>
+       <p>Зачем всё так усложнять?</p>
+       <p>Для анонимности, конечно же! А с помощью кода ты сможешь доказать, что работа твоя и получить приз!</p>
+       <p>Работы принимаются до 1-го августа.</p>
        
-       </div>
-       <div class = "myelement">
+       
       
-        <TextField className='form textinput' multiline fullWidth label="Начните писать..." value={text} onChange={handleChange} />
-        <Box textAlign='center'>
-        <AdornedButton onClick={generateText} loading = {generatedText.pending}>
-         Генерировать 
-        </AdornedButton>
+       <label htmlFor="upload-fic">
+        <input
+          style={{ display: 'none' }}
+          id="upload-fic"
+          name="upload-fic"
+          type="file"
+          onChange={handleSubmit}
+        />
+
+        <Button  variant="text" component="span" type="submit"  onClick={fileSend}>
+          Выбрать файл и отправить!
+        </Button>
+        
+        </label>
+        <p>{response}</p>
         </Box>
-        </div>
+       
         </form>
       
     </div>
@@ -117,6 +132,3 @@ const AdornedButton = (props) => {
 }
 
 export default App;
-//{generatedText.pending&&
-  //<div className='result pending'>Подождите!</div>}
-  //
