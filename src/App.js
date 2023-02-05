@@ -84,13 +84,14 @@ function App() {
 
   return (
     
+    
     <MuiThemeProvider theme ={THEME}>
     <div className="application">
       </div>
     <div className='app-container'>
       
     <YMInitializer accounts={[89457679]}/>
-    
+  
     <form noValidate autoComplete='off'> 
       
        
@@ -124,12 +125,17 @@ function App() {
         </label>
         
         <p>{response}</p>
+        <p>Работы с предыдущего конкурса можно прочитать в <a href='https://archive.konkurs.monetka.name/'>Архиве</a>.</p>
+        <p>Присылая работу, вы соглашаетесь, что она будет идти под лицензией <a href='http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ru'>CC BY-NC-SA 3.0</a></p>
+         
         </Box>
        
         </form>
       
     </div>
+
     </MuiThemeProvider>
+    
   );
 }
 
