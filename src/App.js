@@ -8,7 +8,7 @@ import { YMInitializer } from 'react-yandex-metrika';
 import { Box } from '@material-ui/core';
 import axios from 'axios';
 
-const TITLE = 'Конкурс писателей фанфиков';
+const TITLE = 'Конкурс Малых Фанфиков';
 function App() {
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState("");
@@ -21,12 +21,12 @@ function App() {
 
   const handleChange = (event) => {
     setFile(event.target.files[0]);
-    setResponse("Подождите немного...")
+    setResponse("Уже в пути...")
   };
 
 
   const handleSubmit = (event) => {
-    setResponse("Подождите немного...")
+    setResponse("Уже в пути...")
     event.preventDefault();
     let form_data = new FormData();
     form_data.append('file', event.target.files[0], event.target.files[0].name);
@@ -39,18 +39,18 @@ function App() {
         .then(res => {
           console.log(res.data);
           if (res.data.message == "There was an error uploading the file"){
-            setResponse("Ой-ой! Что-то пошло не так...");
+            setResponse("Мда... Что-то пошло не так. Попробуй подождать немного. Если не помогает, напиши моему другу на почту tkorghebin@gmail.com");
           }
           else if (res.data.message == "This file was alredy sent!"){
-            setResponse("А разве ты мне уже не слал этот файл?.. Твой код: " + String(res.data.hash));
+            setResponse("Этот файл я уже таскала... Твой код: " + String(res.data.hash));
           }
           else {
-            setResponse("Получила и запомнила! Твой код: " + String(res.data.hash));
+            setResponse("Принято! Твой код: " + String(res.data.hash));
           }
         })
         .catch(err => {
           console.log(err);
-          setResponse("Ой-ой! Что-то пошло не так...");
+          setResponse("Мда... Что-то пошло не так. Попробуй подождать немного. Если не помогает, напиши моему другу на почту tkorghebin@gmail.com");
         })
   };
   const fileSend = () => {
@@ -92,18 +92,19 @@ function App() {
     <YMInitializer accounts={[89457679]}/>
     
     <form noValidate autoComplete='off'> 
-      <div class="image hide-mobile">
-      <img src="unknown-35.png" height="180" alt="Writer by F_F" title="Writer by F_F"></img>
-        <p></p>
-  
-       </div> 
+      
        
        <Box textAlign='center'>
-       <h1><span>Конкурс писателей фанфиков</span></h1>
-       <p>Привет, друг! Здесь ты сможешь отправить свою работу на конкурс и получить код!</p>
-       <p>Зачем всё так усложнять?</p>
-       <p>Для анонимности, конечно же! А с помощью кода ты сможешь доказать, что работа твоя и получить приз!</p>
-       <p>Работы принимаются до 27-го февраля.</p>
+       <div class="image hide-mobile">
+        
+        <img src="dutynbg.png" width="300px" ></img>
+          <p></p>
+    
+         </div> 
+       <h1><span>Конкурс Малых Фанфиков</span></h1>
+       <p>Привет, писатель! Здесь ты сможешь отправить свою работу на конкурс и получить код!</p>
+       <p>Код нужен для анонимности! С его помощью ты сможешь доказать, что работа твоя и получить приз!</p>
+       <p>Работы принимаются до конца 26-го февраля по Москве.</p>
        
        
       
@@ -121,6 +122,7 @@ function App() {
         </Button>
         
         </label>
+        
         <p>{response}</p>
         </Box>
        
